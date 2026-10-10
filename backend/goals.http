@@ -1,0 +1,8 @@
+
+POST http://localhost:8080/goals
+Content-Type: application/json
+
+{
+  "title": "Learn Spring Boot",
+  "description": "Build the Anveshka backend"
+}

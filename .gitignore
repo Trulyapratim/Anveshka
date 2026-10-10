@@ -1,0 +1,24 @@
+# Java compiled files
+*.class
+
+# Build output
+target/
+build/
+
+# IntelliJ local settings
+.idea/
+
+# macOS
+.DS_Store
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Ignore IDE settings anywhere in the project
+**/.idea/
+
+# Ignore Java build output anywhere in the project
+**/target/
+**/build/
