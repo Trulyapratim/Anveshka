@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/goals")
 public class GoalController {
@@ -16,7 +18,7 @@ public class GoalController {
 
     // post karna h means database me persist karna hoga -> create karega goal ko and then update karega
     @PostMapping
-    public Goal createGoal(@RequestBody Goal goal){
+    public Goal createGoal(@Valid @RequestBody Goal goal){
         return goalService.createGoal(goal);
     }
 
@@ -28,7 +30,7 @@ public class GoalController {
 
     // Agar hame databas me changes karne h toh ye method kaam ayega
     @PutMapping("/{id}")
-    public Goal updateGoal(@PathVariable Long id, @RequestBody Goal goal) {
+    public Goal updateGoal(@Valid @PathVariable Long id, @RequestBody Goal goal) {
         return goalService.updateGoal(id, goal);
     }
 
