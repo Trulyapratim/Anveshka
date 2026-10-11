@@ -24,7 +24,9 @@ public class GoalService {
 
     public Goal updateGoal(Long id, Goal updatedGoal) {
         Goal existingGoal = goalRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Goal not found"));
+                .orElseThrow(() -> new GoalNotFoundException(
+                        "Goal not found with id: " + id
+                ));
 
         existingGoal.setTitle(updatedGoal.getTitle());
         existingGoal.setDescription(updatedGoal.getDescription());
@@ -41,7 +43,7 @@ public class GoalService {
 
     public void deleteGoal(Long id) {
         Goal goal = goalRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Goal not found"));
+                .orElseThrow(() -> new GoalNotFoundException("Goal not found with id: " + id));
 
         goalRepository.delete(goal);
     }
