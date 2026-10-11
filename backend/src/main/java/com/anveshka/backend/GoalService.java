@@ -21,15 +21,23 @@ public class GoalService {
         return goalRepository.findAll();
     }
 
+
     public Goal updateGoal(Long id, Goal updatedGoal) {
         Goal existingGoal = goalRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Goal not found"));
 
         existingGoal.setTitle(updatedGoal.getTitle());
         existingGoal.setDescription(updatedGoal.getDescription());
+        existingGoal.setAvailableTime(updatedGoal.getAvailableTime());
+        existingGoal.setAvailableTimeUnit(updatedGoal.getAvailableTimeUnit());
+        existingGoal.setStartDate(updatedGoal.getStartDate());
+        existingGoal.setOriginalDeadline(updatedGoal.getOriginalDeadline());
+        existingGoal.setCurrentDeadline(updatedGoal.getCurrentDeadline());
+        existingGoal.setDifficulty(updatedGoal.getDifficulty());
 
         return goalRepository.save(existingGoal);
     }
+
 
     public void deleteGoal(Long id) {
         Goal goal = goalRepository.findById(id)
